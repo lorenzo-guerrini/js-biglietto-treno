@@ -5,15 +5,23 @@
 // va applicato uno sconto del 40% per gli over 65.
 // L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
-const nKm = prompt("Quanti km vuoi percorrere?");
-const eta = prompt("Quanti anni ha il passeggero?");
-let prezzo = nKm * 0.21;
+const nKm = parseInt(prompt("Quanti km vuoi percorrere?"));
+const eta = parseInt(prompt("Quanti anni ha il passeggero?"));
 
-if (eta < 18) {
-    prezzo -= prezzo * 20 / 100;
+if (isNaN(nKm) || isNaN(eta)) {
+    console.log("Uno dei valori da te inseriti è scorretto. Ricomincia da capo.")
+    
+} else {
+    let prezzo = nKm * 0.21;
+
+    if (eta < 18) {
+        prezzo -= prezzo * 20 / 100;
+    }
+
+    if (eta >= 65) {
+        prezzo -= prezzo * 40 / 100;
+    }
+
+    console.log(Math.round(prezzo * 100) / 100);
 }
 
-if (eta >= 65) {
-    prezzo -= prezzo * 40 / 100;
-}
-console.log(prezzo);
