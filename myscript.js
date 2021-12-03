@@ -6,15 +6,20 @@
 // L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
 function priceCalculator() {
-    const nKm = parseInt(prompt("Quanti km vuoi percorrere?"));
-    const eta = parseInt(prompt("Quanti anni ha il passeggero?"));
-
     document.getElementById("price-container").style.display = "block";
 
-    if (isNaN(nKm) || isNaN(eta)) {
-        document.getElementById("output").innerHTML = "Uno dei valori da te inseriti è scorretto. Ricomincia da capo.";
-        return;
+    const nKm = parseInt(prompt("Quanti km vuoi percorrere?"));
 
+    if (isNaN(nKm)) {
+        document.getElementById("output").innerHTML = "Il valore dei km da te inserito è scorretto. Ricomincia da capo.";
+        return;
+    }
+
+    const eta = parseInt(prompt("Quanti anni ha il passeggero?"));
+
+    if (isNaN(eta)) {
+        document.getElementById("output").innerHTML = "Il valore di età da te inserito è scorretto. Ricomincia da capo.";
+        return;
     }
 
     let prezzo = nKm * 0.21;
@@ -28,6 +33,6 @@ function priceCalculator() {
     }
 
     prezzo = (Math.round(prezzo * 100) / 100).toFixed(2);
-    
+
     document.getElementById("output").innerHTML = prezzo + "€";
 }
