@@ -9,24 +9,25 @@ function priceCalculator() {
     const nKm = parseInt(prompt("Quanti km vuoi percorrere?"));
     const eta = parseInt(prompt("Quanti anni ha il passeggero?"));
 
+    document.getElementById("price-container").style.display = "block";
+
     if (isNaN(nKm) || isNaN(eta)) {
-        document.getElementById("price-container").style.display = "block";
         document.getElementById("output").innerHTML = "Uno dei valori da te inseriti è scorretto. Ricomincia da capo.";
         return;
 
     }
-        let prezzo = nKm * 0.21;
 
-        if (eta < 18) {
-            prezzo -= prezzo * 20 / 100;
-        }
+    let prezzo = nKm * 0.21;
 
-        if (eta >= 65) {
-            prezzo -= prezzo * 40 / 100;
-        }
-
-        prezzo = (Math.round(prezzo * 100) / 100).toFixed(2);
-
-        document.getElementById("price-container").style.display = "block";
-        document.getElementById("output").innerHTML = prezzo + "€";
+    if (eta < 18) {
+        prezzo -= prezzo * 20 / 100;
     }
+
+    if (eta >= 65) {
+        prezzo -= prezzo * 40 / 100;
+    }
+
+    prezzo = (Math.round(prezzo * 100) / 100).toFixed(2);
+    
+    document.getElementById("output").innerHTML = prezzo + "€";
+}
