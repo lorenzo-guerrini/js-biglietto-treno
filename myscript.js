@@ -10,9 +10,11 @@ function priceCalculator() {
     const eta = parseInt(prompt("Quanti anni ha il passeggero?"));
 
     if (isNaN(nKm) || isNaN(eta)) {
-        document.getElementById("output").innerHTML = "Uno dei valori da te inseriti è scorretto. Ricomincia da capo."
+        document.getElementById("price-container").style.display = "block";
+        document.getElementById("output").innerHTML = "Uno dei valori da te inseriti è scorretto. Ricomincia da capo.";
+        return;
 
-    } else {
+    }
         let prezzo = nKm * 0.21;
 
         if (eta < 18) {
@@ -28,4 +30,3 @@ function priceCalculator() {
         document.getElementById("price-container").style.display = "block";
         document.getElementById("output").innerHTML = prezzo + "€";
     }
-}
